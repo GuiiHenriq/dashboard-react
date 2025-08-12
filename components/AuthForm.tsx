@@ -128,8 +128,8 @@ export default function AuthForm({ type }: AuthFormProps) {
                     required
                     value={formData.firstName || ""}
                     onChange={handleChange}
-                    className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white ${
-                      errors.firstName ? 'border-red-300 focus:ring-red-500' : 'border-gray-300'
+                    className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-400 bg-white hover:bg-gray-50 focus:bg-white ${
+                      errors.firstName ? 'border-red-300 focus:ring-red-500' : 'border-gray-300 hover:border-gray-400'
                     }`}
                     placeholder="John"
                   />
@@ -148,8 +148,8 @@ export default function AuthForm({ type }: AuthFormProps) {
                     required
                     value={formData.lastName || ""}
                     onChange={handleChange}
-                    className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white ${
-                      errors.lastName ? 'border-red-300 focus:ring-red-500' : 'border-gray-300'
+                    className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-400 bg-white hover:bg-gray-50 focus:bg-white ${
+                      errors.lastName ? 'border-red-300 focus:ring-red-500' : 'border-gray-300 hover:border-gray-400'
                     }`}
                     placeholder="Doe"
                   />
@@ -171,8 +171,8 @@ export default function AuthForm({ type }: AuthFormProps) {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white ${
-                  errors.email ? 'border-red-300 focus:ring-red-500' : 'border-gray-300'
+                className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-400 bg-white hover:bg-gray-50 focus:bg-white ${
+                  errors.email ? 'border-red-300 focus:ring-red-500' : 'border-gray-300 hover:border-gray-400'
                 }`}
                 placeholder="john@example.com"
               />
@@ -181,7 +181,6 @@ export default function AuthForm({ type }: AuthFormProps) {
               )}
             </div>
 
-            {/* Password */}
             <div>
               <label htmlFor="password" className="block text-sm font-semibold text-gray-700 mb-2">
                 Password
@@ -193,8 +192,8 @@ export default function AuthForm({ type }: AuthFormProps) {
                 required
                 value={formData.password}
                 onChange={handleChange}
-                className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white ${
-                  errors.password ? 'border-red-300 focus:ring-red-500' : 'border-gray-300'
+                className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-400 bg-white hover:bg-gray-50 focus:bg-white ${
+                  errors.password ? 'border-red-300 focus:ring-red-500' : 'border-gray-300 hover:border-gray-400'
                 }`}
                 placeholder="••••••••"
               />
@@ -215,8 +214,8 @@ export default function AuthForm({ type }: AuthFormProps) {
                   required
                   value={formData.confirmPassword || ""}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white ${
-                    errors.confirmPassword ? 'border-red-300 focus:ring-red-500' : 'border-gray-300'
+                  className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-400 bg-white hover:bg-gray-50 focus:bg-white ${
+                    errors.confirmPassword ? 'border-red-300 focus:ring-red-500' : 'border-gray-300 hover:border-gray-400'
                   }`}
                   placeholder="••••••••"
                 />
