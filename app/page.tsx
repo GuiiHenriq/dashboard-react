@@ -85,7 +85,7 @@ export default function Home() {
             <>
               <Link 
                 href="/auth/login"
-                className="block w-full max-w-xs mx-auto py-3 px-6 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
+                className="cursor-pointer block w-full max-w-xs mx-auto py-3 px-6 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
               >
                 Sign In
               </Link>

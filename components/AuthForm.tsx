@@ -312,7 +312,7 @@ export default function AuthForm({ type }: AuthFormProps) {
             <button
               type="submit"
               disabled={isLoading}
-              className={`w-full py-3 px-4 rounded-xl font-semibold text-white transition-all duration-200 transform ${
+              className={`cursor-pointer w-full py-3 px-4 rounded-xl font-semibold text-white transition-all duration-200 transform ${
                 isLoading
                   ? "bg-gray-400 cursor-not-allowed"
                   : "bg-blue-600 hover:bg-blue-700 hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl"
