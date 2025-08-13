@@ -3,6 +3,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import { z } from "zod";
+import { useAuth } from "@/lib/auth-context";
+import { useRedirectIfAuthenticated } from "@/hooks/useRedirectIfAuthenticated";
+import { useRouter } from "next/navigation";
+import ApiCredentialsInfo from "./ApiCredentialsInfo";
 
 const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -29,6 +33,11 @@ interface FormErrors {
 }
 
 export default function AuthForm({ type }: AuthFormProps) {
+  const { login, register, isLoading: authLoading } = useAuth();
+  const router = useRouter();
+  
+  const { isLoading: redirectLoading } = useRedirectIfAuthenticated();
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -37,21 +46,48 @@ export default function AuthForm({ type }: AuthFormProps) {
 
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
+  const [apiError, setApiError] = useState<string>("");
+
+  const handleEmailSelect = (email: string) => {
+    setFormData(prev => ({
+      ...prev,
+      email: email
+    }));
+    
+    if (errors.email) {
+      setErrors(prev => ({
+        ...prev,
+        email: ""
+      }));
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setErrors({});
+    setApiError("");
 
     try {
       const schema = type === "login" ? loginSchema : registerSchema;
       const validatedData = schema.parse(formData);
       
-      setTimeout(() => {
-        setIsLoading(false);
-        console.log("Form submitted with data:", validatedData);
-        alert(`${type === "login" ? "Login" : "Registration"} form submitted successfully!`);
-      }, 1000);
+      if (type === "login") {
+        await login({
+          email: validatedData.email,
+          password: validatedData.password,
+        });
+      } else {
+        const registerData = validatedData as z.infer<typeof registerSchema>;
+        await register({
+          email: registerData.email,
+          password: registerData.password,
+          first_name: registerData.firstName,
+          last_name: registerData.lastName,
+        });
+      }
+      
+      router.push('/dashboard');
     } catch (error) {
       if (error instanceof z.ZodError) {
         const fieldErrors: FormErrors = {};
@@ -61,7 +97,12 @@ export default function AuthForm({ type }: AuthFormProps) {
           }
         });
         setErrors(fieldErrors);
+      } else if (error instanceof Error) {
+        setApiError(error.message || `${type === "login" ? "Login" : "Registration"} failed. Please try again.`);
+      } else {
+        setApiError(`${type === "login" ? "Login" : "Registration"} failed. Please try again.`);
       }
+    } finally {
       setIsLoading(false);
     }
   };
@@ -79,9 +120,39 @@ export default function AuthForm({ type }: AuthFormProps) {
         [name]: ""
       }));
     }
+    
+    if (apiError) {
+      setApiError("");
+    }
   };
 
   const isLogin = type === "login";
+  
+  if (redirectLoading || authLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50">
+        <div className="text-center">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-2xl mb-4 shadow-lg animate-pulse">
+            <svg 
+              className="w-8 h-8 text-white" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2} 
+                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" 
+              />
+            </svg>
+          </div>
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">Loading...</h1>
+          <p className="text-gray-600">Please wait</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50 px-4">
@@ -114,6 +185,19 @@ export default function AuthForm({ type }: AuthFormProps) {
         </div>
 
         <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
+          {apiError && (
+            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl">
+              <p className="text-red-800 text-sm font-medium">{apiError}</p>
+            </div>
+          )}
+
+          <div className="mb-6">
+            <ApiCredentialsInfo 
+              type={type} 
+              onEmailSelect={handleEmailSelect}
+            />
+          </div>
+
           <form onSubmit={handleSubmit} className="space-y-6">
             {!isLogin && (
               <div className="grid grid-cols-2 gap-4">
@@ -222,17 +306,6 @@ export default function AuthForm({ type }: AuthFormProps) {
                 {errors.confirmPassword && (
                   <p className="mt-1 text-sm text-red-600">{errors.confirmPassword}</p>
                 )}
-              </div>
-            )}
-
-            {isLogin && (
-              <div className="text-right">
-                <Link 
-                  href="#" 
-                  className="text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors"
-                >
-                  Forgot your password?
-                </Link>
               </div>
             )}
 
