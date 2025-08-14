@@ -1,0 +1,23 @@
+{
+  "validUser": {
+    "email": "john.doe@example.com",
+    "password": "password123"
+  },
+  "newUser": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john.doe@example.com",
+    "password": "password123",
+    "confirmPassword": "password123"
+  },
+  "invalidCredentials": {
+    "email": "invalid@example.com",
+    "password": "wrongpassword"
+  },
+  "userFormData": {
+    "firstName": "Jane",
+    "lastName": "Smith",
+    "email": "jane.smith@example.com",
+    "job": "Software Engineer"
+  }
+}
