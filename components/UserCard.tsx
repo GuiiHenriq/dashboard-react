@@ -26,7 +26,7 @@ export default function UserCard({ user, onEdit, onDelete }: UserCardProps) {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-6 hover:shadow-xl transition-shadow">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-6 hover:shadow-xl transition-shadow" data-cy="user-card">
       <div className="flex items-center space-x-4 mb-4">
         <img
           src={user.avatar || `https://ui-avatars.com/api/?name=${user.first_name}+${user.last_name}&background=3b82f6&color=fff&size=64`}
@@ -45,6 +45,7 @@ export default function UserCard({ user, onEdit, onDelete }: UserCardProps) {
       <div className="flex space-x-2">
         <button
           onClick={() => onEdit(user)}
+          data-cy="edit-user-btn"
           className="cursor-pointer flex-1 flex items-center justify-center px-3 py-2 bg-blue-600 dark:bg-blue-500 text-white text-sm font-medium rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors"
         >
           <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -54,6 +55,7 @@ export default function UserCard({ user, onEdit, onDelete }: UserCardProps) {
         </button>
         <button
           onClick={() => setShowDeleteConfirm(true)}
+          data-cy="delete-user-btn"
           className="cursor-pointer flex-1 flex items-center justify-center px-3 py-2 bg-red-600 dark:bg-red-500 text-white text-sm font-medium rounded-lg hover:bg-red-700 dark:hover:bg-red-600 transition-colors"
           disabled={isDeleting}
         >
@@ -66,7 +68,7 @@ export default function UserCard({ user, onEdit, onDelete }: UserCardProps) {
 
       {showDeleteConfirm && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl max-w-sm w-full mx-4 p-6">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl max-w-sm w-full mx-4 p-6" data-cy="delete-confirmation">
             <div className="text-center mb-6">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 dark:bg-red-900/50 rounded-full mb-4">
                 <svg className="w-8 h-8 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -91,6 +93,7 @@ export default function UserCard({ user, onEdit, onDelete }: UserCardProps) {
               </button>
               <button
                 onClick={handleDelete}
+                data-cy="confirm-delete-btn"
                 className="flex-1 px-4 py-2 bg-red-600 dark:bg-red-500 text-white rounded-lg hover:bg-red-700 dark:hover:bg-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 disabled={isDeleting}
               >

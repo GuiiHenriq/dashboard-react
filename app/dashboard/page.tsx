@@ -184,6 +184,7 @@ export default function DashboardPage() {
             </div>
             <button
               onClick={openCreateModal}
+              data-cy="create-user-btn"
               className="cursor-pointer mt-4 sm:mt-0 inline-flex items-center px-6 py-3 bg-blue-600 dark:bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors shadow-lg"
             >
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -224,7 +225,7 @@ export default function DashboardPage() {
               ))}
             </div>
           ) : users.length === 0 ? (
-            <div className="text-center py-12">
+            <div className="text-center py-12" data-cy="no-users-state">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-2xl mb-4">
                 <svg className="w-8 h-8 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
@@ -234,6 +235,7 @@ export default function DashboardPage() {
               <p className="text-gray-600 dark:text-gray-400 mb-6">Get started by creating your first user.</p>
               <button
                 onClick={openCreateModal}
+                data-cy="create-first-user-btn"
                 className="inline-flex items-center px-6 py-3 bg-blue-600 dark:bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors"
               >
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -244,7 +246,7 @@ export default function DashboardPage() {
             </div>
           ) : (
             <>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8" data-cy="users-grid">
                 {users.map((user) => (
                   <UserCard
                     key={user.id}

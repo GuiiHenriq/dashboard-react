@@ -14,14 +14,8 @@
     "cypress:run": "cypress run",
     "cypress:run:e2e": "cypress run --spec 'cypress/e2e/**/*'",
     "cypress:run:component": "cypress run --component",
-    "cypress:login": "cypress run --spec 'cypress/e2e/login-*.cy.ts'",
-    "cypress:login:integration": "cypress run --spec 'cypress/e2e/login-integration.cy.ts'",
-    "cypress:login:smoke": "cypress run --spec 'cypress/e2e/login-smoke.cy.ts'",
     "test:e2e": "start-server-and-test dev http://localhost:3000 cypress:run:e2e",
-    "test:e2e:open": "start-server-and-test dev http://localhost:3000 cypress:open",
-    "test:login": "start-server-and-test dev http://localhost:3000 cypress:login",
-    "test:login:fast": "start-server-and-test dev http://localhost:3000 cypress:login:smoke",
-    "test:login:integration": "start-server-and-test dev http://localhost:3000 cypress:login:integration"
+    "test:e2e:open": "start-server-and-test dev http://localhost:3000 cypress:open"
   },
   "dependencies": {
     "next": "15.4.6",

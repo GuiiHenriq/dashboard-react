@@ -46,7 +46,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange, isLo
   if (totalPages <= 1) return null;
 
   return (
-    <div className="flex items-center justify-center space-x-2">
+    <div className="flex items-center justify-center space-x-2" data-cy="pagination">
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1 || isLoading}
