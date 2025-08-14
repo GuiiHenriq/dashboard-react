@@ -7,7 +7,10 @@
 - 🌙 **Theme customization** - ✅
 - 🧪 **Testing** - ✅
 
-## Stack
+## 🚀 Deploy
+https://dashboard-react-guilhermeerba.vercel.app/
+
+## 🛠️ Stack
 
 - **Framework**: Next.js 15 with App Router
 - **Language**: Typescript
@@ -17,14 +20,12 @@
 - **Validation**: Zod
 - **State Management**: React Context API
 
-## Getting Started
-
-### Prerequisites
+## 📌 Requirements
 
 - Node.js 18+ 
 - npm or yarn
 
-### Installation
+## 🚀 How to Run
 
 1. Clone the repository:
 ```bash
@@ -44,7 +45,16 @@ npm run dev
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### Unit Tests (Jest)
+### Environment Variables
+
+Create a `.env.local` file for environment-specific variables:
+
+```env
+NEXT_PUBLIC_API_URL=https://reqres.in/api
+REQRES_API_KEY=reqres-free-v1
+```
+
+### 🧪 Unit Tests (Jest)
 
 Run unit tests for components and utilities:
 *Only tested minimum coverage*
@@ -60,7 +70,7 @@ npm run test:watch
 npm run test:coverage
 ```
 
-### E2E Tests (Cypress)
+### 🎨 E2E Tests (Cypress)
 
 Run end-to-end tests to verify complete user workflows:
 
@@ -78,7 +88,7 @@ npm run cypress:run
 npm run cypress:run:e2e
 ```
 
-## Project Structure
+## 🏗️ Architecture
 
 ```
 ├── __tests__/             # Jest unit tests
@@ -115,15 +125,6 @@ The application integrates with the [ReqRes API](https://reqres.in/) for demonst
 - **Authentication**: POST `/api/auth/login`, `/api/auth/register`
 - **Users**: GET, POST, PUT, DELETE `/api/users`
 
-
-### Environment Variables
-
-Create a `.env.local` file for environment-specific variables:
-
-```env
-NEXT_PUBLIC_API_URL=https://reqres.in/api
-REQRES_API_KEY=reqres-free-v1
-```
 
 ## License
 
