@@ -227,7 +227,7 @@ export default function AuthForm({ type }: AuthFormProps) {
                   )}
                 </div>
                 <div>
-                  <label htmlFor="lastName" className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label htmlFor="lastName" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                     Last name
                   </label>
                   <input
@@ -237,20 +237,20 @@ export default function AuthForm({ type }: AuthFormProps) {
                     required
                     value={formData.lastName || ""}
                     onChange={handleChange}
-                    className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-400 bg-white hover:bg-gray-50 focus:bg-white ${
-                      errors.lastName ? 'border-red-300 focus:ring-red-500' : 'border-gray-300 hover:border-gray-400'
+                    className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:bg-white dark:focus:bg-gray-700 ${
+                      errors.lastName ? 'border-red-300 dark:border-red-600 focus:ring-red-500' : 'border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500'
                     }`}
                     placeholder="Doe"
                   />
                   {errors.lastName && (
-                    <p className="mt-1 text-sm text-red-600">{errors.lastName}</p>
+                    <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.lastName}</p>
                   )}
                 </div>
               </div>
             )}
 
             <div>
-              <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                 Email address
               </label>
               <input
@@ -260,18 +260,18 @@ export default function AuthForm({ type }: AuthFormProps) {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-400 bg-white hover:bg-gray-50 focus:bg-white ${
-                  errors.email ? 'border-red-300 focus:ring-red-500' : 'border-gray-300 hover:border-gray-400'
+                className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:bg-white dark:focus:bg-gray-700 ${
+                  errors.email ? 'border-red-300 dark:border-red-600 focus:ring-red-500' : 'border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500'
                 }`}
                 placeholder="john@example.com"
               />
               {errors.email && (
-                <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+                <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.email}</p>
               )}
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="password" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                 Password
               </label>
               <input
@@ -281,19 +281,19 @@ export default function AuthForm({ type }: AuthFormProps) {
                 required
                 value={formData.password}
                 onChange={handleChange}
-                className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-400 bg-white hover:bg-gray-50 focus:bg-white ${
-                  errors.password ? 'border-red-300 focus:ring-red-500' : 'border-gray-300 hover:border-gray-400'
+                className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:bg-white dark:focus:bg-gray-700 ${
+                  errors.password ? 'border-red-300 dark:border-red-600 focus:ring-red-500' : 'border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500'
                 }`}
                 placeholder="••••••••"
               />
               {errors.password && (
-                <p className="mt-1 text-sm text-red-600">{errors.password}</p>
+                <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.password}</p>
               )}
             </div>
 
             {!isLogin && (
               <div>
-                <label htmlFor="confirmPassword" className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor="confirmPassword" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                   Confirm password
                 </label>
                 <input
@@ -303,13 +303,13 @@ export default function AuthForm({ type }: AuthFormProps) {
                   required
                   value={formData.confirmPassword || ""}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-400 bg-white hover:bg-gray-50 focus:bg-white ${
-                    errors.confirmPassword ? 'border-red-300 focus:ring-red-500' : 'border-gray-300 hover:border-gray-400'
+                  className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:bg-white dark:focus:bg-gray-700 ${
+                    errors.confirmPassword ? 'border-red-300 dark:border-red-600 focus:ring-red-500' : 'border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500'
                   }`}
                   placeholder="••••••••"
                 />
                 {errors.confirmPassword && (
-                  <p className="mt-1 text-sm text-red-600">{errors.confirmPassword}</p>
+                  <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.confirmPassword}</p>
                 )}
               </div>
             )}
@@ -338,25 +338,25 @@ export default function AuthForm({ type }: AuthFormProps) {
           </form>
 
           <div className="my-6 flex items-center">
-            <div className="flex-grow border-t border-gray-300"></div>
-            <span className="flex-shrink-0 px-4 text-sm text-gray-500">or</span>
-            <div className="flex-grow border-t border-gray-300"></div>
+            <div className="flex-grow border-t border-gray-300 dark:border-gray-600"></div>
+            <span className="flex-shrink-0 px-4 text-sm text-gray-500 dark:text-gray-400">or</span>
+            <div className="flex-grow border-t border-gray-300 dark:border-gray-600"></div>
           </div>
 
           <div className="text-center">
-            <span className="text-gray-600">
+            <span className="text-gray-600 dark:text-gray-400">
               {isLogin ? "Don't have an account?" : "Already have an account?"}
             </span>{" "}
             <Link 
               href={isLogin ? "/auth/register" : "/auth/login"}
-              className="font-semibold text-blue-600 hover:text-blue-700 transition-colors"
+              className="font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
             >
               {isLogin ? "Sign up" : "Sign in"}
             </Link>
           </div>
         </div>
 
-        <div className="text-center mt-8 text-sm text-gray-500">
+        <div className="text-center mt-8 text-sm text-gray-500 dark:text-gray-400">
           <p>GuiiHenrique</p>
         </div>
       </div>
