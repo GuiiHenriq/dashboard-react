@@ -13,15 +13,15 @@ export default function Accordion({ title, children, defaultOpen = false, classN
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
-    <div className={`border border-gray-200 rounded-xl bg-white ${className}`}>
+    <div className={`border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 ${className}`}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full px-4 py-3 text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset rounded-t-xl hover:bg-gray-50 transition-colors"
+        className="w-full px-4 py-3 text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset rounded-t-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
       >
         <div className="flex items-center justify-between">
-          <span className="text-sm font-medium text-gray-900">{title}</span>
+          <span className="text-sm font-medium text-gray-900 dark:text-gray-100">{title}</span>
           <svg
-            className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${
+            className={`w-5 h-5 text-gray-500 dark:text-gray-400 transition-transform duration-200 ${
               isOpen ? "rotate-180" : ""
             }`}
             fill="none"
@@ -43,7 +43,7 @@ export default function Accordion({ title, children, defaultOpen = false, classN
           isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="px-4 pb-3 border-t border-gray-100 max-h-80 overflow-y-auto">
+        <div className="px-4 pb-3 border-t border-gray-100 dark:border-gray-700 max-h-80 overflow-y-auto">
           {children}
         </div>
       </div>

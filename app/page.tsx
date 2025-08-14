@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useAuth } from "@/lib/auth-context";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Home() {
   const { isAuthenticated, isLoading, user } = useAuth();
@@ -21,9 +22,9 @@ export default function Home() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-blue-900">
         <div className="text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-2xl mb-4 shadow-lg animate-pulse">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 dark:bg-blue-500 rounded-2xl mb-4 shadow-lg animate-pulse">
             <svg 
               className="w-8 h-8 text-white" 
               fill="none" 
@@ -38,17 +39,21 @@ export default function Home() {
               />
             </svg>
           </div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Loading...</h1>
-          <p className="text-gray-600">Checking your session</p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Loading...</h1>
+          <p className="text-gray-600 dark:text-gray-400">Checking your session</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 px-4">
+      <div className="absolute top-4 right-4">
+        <ThemeToggle />
+      </div>
+      
       <div className="text-center">
-        <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-2xl mb-4 shadow-lg">
+        <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 dark:bg-blue-500 rounded-2xl mb-4 shadow-lg">
           <svg 
             className="w-8 h-8 text-white" 
             fill="none" 
@@ -63,20 +68,20 @@ export default function Home() {
             />
           </svg>
         </div>
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">Dashboard UI</h1>
-        <p className="text-gray-600 mb-8">Welcome to our beautiful user interface</p>
+        <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">Dashboard UI</h1>
+        <p className="text-gray-600 dark:text-gray-400 mb-8">Welcome to our beautiful user interface</p>
         
         <div className="space-y-4">
           {isAuthenticated && user ? (
             <>
-              <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl">
-                <p className="text-green-800 font-medium">
+              <div className="mb-6 p-4 bg-green-50 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-xl">
+                <p className="text-green-800 dark:text-green-200 font-medium">
                   Welcome back, {user.first_name}!
                 </p>
               </div>
               <Link 
                 href="/dashboard"
-                className="block w-full max-w-xs mx-auto py-3 px-6 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
+                className="block w-full max-w-xs mx-auto py-3 px-6 bg-blue-600 dark:bg-blue-500 text-white font-semibold rounded-xl hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors shadow-lg hover:shadow-xl"
               >
                 Go to Dashboard
               </Link>
@@ -85,14 +90,14 @@ export default function Home() {
             <>
               <Link 
                 href="/auth/login"
-                className="cursor-pointer block w-full max-w-xs mx-auto py-3 px-6 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
+                className="cursor-pointer block w-full max-w-xs mx-auto py-3 px-6 bg-blue-600 dark:bg-blue-500 text-white font-semibold rounded-xl hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors shadow-lg hover:shadow-xl"
               >
                 Sign In
               </Link>
               
               <Link 
                 href="/auth/register"
-                className="block w-full max-w-xs mx-auto py-3 px-6 bg-white text-blue-600 font-semibold rounded-xl border border-blue-600 hover:bg-blue-50 transition-colors shadow-lg hover:shadow-xl"
+                className="block w-full max-w-xs mx-auto py-3 px-6 bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 font-semibold rounded-xl border border-blue-600 dark:border-blue-500 hover:bg-blue-50 dark:hover:bg-gray-700 transition-colors shadow-lg hover:shadow-xl"
               >
                 Sign Up
               </Link>

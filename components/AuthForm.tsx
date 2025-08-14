@@ -7,6 +7,7 @@ import { useAuth } from "@/lib/auth-context";
 import { useRedirectIfAuthenticated } from "@/hooks/useRedirectIfAuthenticated";
 import { useRouter } from "next/navigation";
 import ApiCredentialsInfo from "./ApiCredentialsInfo";
+import ThemeToggle from "./ThemeToggle";
 
 const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -130,9 +131,9 @@ export default function AuthForm({ type }: AuthFormProps) {
   
   if (redirectLoading || authLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-blue-900">
         <div className="text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-2xl mb-4 shadow-lg animate-pulse">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 dark:bg-blue-500 rounded-2xl mb-4 shadow-lg animate-pulse">
             <svg 
               className="w-8 h-8 text-white" 
               fill="none" 
@@ -147,18 +148,22 @@ export default function AuthForm({ type }: AuthFormProps) {
               />
             </svg>
           </div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Loading...</h1>
-          <p className="text-gray-600">Please wait</p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Loading...</h1>
+          <p className="text-gray-600 dark:text-gray-400">Please wait</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-blue-900 px-4">
       <div className="w-full max-w-md">
+        <div className="absolute top-4 right-4">
+          <ThemeToggle />
+        </div>
+        
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-2xl mb-4 shadow-lg">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 dark:bg-blue-500 rounded-2xl mb-4 shadow-lg">
             <svg 
               className="w-8 h-8 text-white" 
               fill="none" 
@@ -173,10 +178,10 @@ export default function AuthForm({ type }: AuthFormProps) {
               />
             </svg>
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
             {isLogin ? "Welcome back" : "Create account"}
           </h1>
-          <p className="text-gray-600">
+          <p className="text-gray-600 dark:text-gray-400">
             {isLogin 
               ? "Sign in to your account to continue" 
               : "Join us and start managing your dashboard"
@@ -184,10 +189,10 @@ export default function AuthForm({ type }: AuthFormProps) {
           </p>
         </div>
 
-        <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
+        <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700 p-8">
           {apiError && (
-            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl">
-              <p className="text-red-800 text-sm font-medium">{apiError}</p>
+            <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/50 border border-red-200 dark:border-red-800 rounded-xl">
+              <p className="text-red-800 dark:text-red-200 text-sm font-medium">{apiError}</p>
             </div>
           )}
 
@@ -202,7 +207,7 @@ export default function AuthForm({ type }: AuthFormProps) {
             {!isLogin && (
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="firstName" className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label htmlFor="firstName" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                     First name
                   </label>
                   <input
@@ -212,13 +217,13 @@ export default function AuthForm({ type }: AuthFormProps) {
                     required
                     value={formData.firstName || ""}
                     onChange={handleChange}
-                    className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-400 bg-white hover:bg-gray-50 focus:bg-white ${
-                      errors.firstName ? 'border-red-300 focus:ring-red-500' : 'border-gray-300 hover:border-gray-400'
+                    className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:bg-white dark:focus:bg-gray-700 ${
+                      errors.firstName ? 'border-red-300 dark:border-red-600 focus:ring-red-500' : 'border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500'
                     }`}
                     placeholder="John"
                   />
                   {errors.firstName && (
-                    <p className="mt-1 text-sm text-red-600">{errors.firstName}</p>
+                    <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.firstName}</p>
                   )}
                 </div>
                 <div>

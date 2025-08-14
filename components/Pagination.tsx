@@ -50,7 +50,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange, isLo
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1 || isLoading}
-        className="flex items-center px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        className="flex items-center px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
       >
         <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -66,10 +66,10 @@ export default function Pagination({ currentPage, totalPages, onPageChange, isLo
             disabled={typeof page !== 'number' || isLoading}
             className={`cursor-pointer px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
               page === currentPage
-                ? 'bg-blue-600 text-white'
+                ? 'bg-blue-600 dark:bg-blue-500 text-white'
                 : typeof page === 'number'
-                ? 'text-gray-700 bg-white border border-gray-300 hover:bg-gray-50'
-                : 'text-gray-400 cursor-default'
+                ? 'text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
+                : 'text-gray-400 dark:text-gray-500 cursor-default'
             } disabled:opacity-50 disabled:cursor-not-allowed`}
           >
             {page}
@@ -80,7 +80,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange, isLo
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages || isLoading}
-        className="cursor-pointer flex items-center px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        className="cursor-pointer flex items-center px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
       >
         Next
         <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
