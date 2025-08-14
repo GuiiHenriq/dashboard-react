@@ -1,0 +1,19 @@
+{
+  "validCredentials": {
+    "email": "eve.holt@reqres.in",
+    "password": "cityslicka"
+  },
+  "invalidCredentials": {
+    "email": "invalid@example.com",
+    "password": "wrongpassword"
+  },
+  "expectedResponse": {
+    "user": {
+      "id": 4,
+      "email": "eve.holt@reqres.in",
+      "first_name": "Eve",
+      "last_name": "Holt"
+    },
+    "token": "QpwL5tke4Pnpja7X4"
+  }
+}
