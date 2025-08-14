@@ -30,6 +30,12 @@ declare global {
       quickLogin(): Chainable<void>
       
       /**
+       * Custom command to fill register form and submit
+       * @example cy.register('John', 'Doe', 'test@example.com', 'password123', 'password123')
+       */
+      register(firstName: string, lastName: string, email: string, password: string, confirmPassword: string): Chainable<void>
+      
+      /**
        * Custom command to verify form validation errors
        * @example cy.checkFormValidation('email', 'Please enter a valid email address')
        */
@@ -46,6 +52,12 @@ declare global {
        * @example cy.waitForLoginPage()
        */
       waitForLoginPage(): Chainable<void>
+      
+      /**
+       * Custom command to wait for register page to load
+       * @example cy.waitForRegisterPage()
+       */
+      waitForRegisterPage(): Chainable<void>
     }
   }
 }
@@ -83,10 +95,29 @@ Cypress.Commands.add('clearValidationErrors', () => {
   cy.get('#password').should('not.have.class', 'border-red-300')
 })
 
+Cypress.Commands.add('register', (firstName: string, lastName: string, email: string, password: string, confirmPassword: string) => {
+  cy.get('#firstName').clear().type(firstName)
+  cy.get('#lastName').clear().type(lastName)
+  cy.get('#email').clear().type(email)
+  cy.get('#password').clear().type(password)
+  cy.get('#confirmPassword').clear().type(confirmPassword)
+  cy.get('button[type="submit"]').click()
+})
+
 Cypress.Commands.add('waitForLoginPage', () => {
   cy.contains('Welcome back').should('be.visible')
   cy.get('#email').should('be.visible')
   cy.get('#password').should('be.visible')
+  cy.get('button[type="submit"]').should('be.visible')
+})
+
+Cypress.Commands.add('waitForRegisterPage', () => {
+  cy.contains('Create account').should('be.visible')
+  cy.get('#firstName').should('be.visible')
+  cy.get('#lastName').should('be.visible')
+  cy.get('#email').should('be.visible')
+  cy.get('#password').should('be.visible')
+  cy.get('#confirmPassword').should('be.visible')
   cy.get('button[type="submit"]').should('be.visible')
 })
 

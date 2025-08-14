@@ -1,0 +1,9 @@
+{
+  "validCredentials": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "eve.holt@reqres.in",
+    "password": "cityslicka",
+    "confirmPassword": "cityslicka"
+  }
+}
